@@ -16,6 +16,12 @@ class Migration(migrations.Migration):
                     model_name='question',
                     index=models.Index(fields=['-pub_date'], name='polls_quest_pub_dat_ca81de_idx'),
                 ),
+            ],
+            database_operations=[
+                migrations.RunSQL(
+                    sql='CREATE INDEX CONCURRENTLY polls_quest_pub_dat_ca81de_idx ON polls_question(pub_date DESC)',
+                    reverse_sql='DROP INDEX polls_quest_pub_dat_ca81de_idx',
+                )
             ]
         ),
     ]
