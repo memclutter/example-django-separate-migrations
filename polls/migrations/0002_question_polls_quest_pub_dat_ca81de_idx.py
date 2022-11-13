@@ -10,8 +10,12 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.AddIndex(
-            model_name='question',
-            index=models.Index(fields=['-pub_date'], name='polls_quest_pub_dat_ca81de_idx'),
+        migrations.SeparateDatabaseAndState(
+            state_operations=[
+                migrations.AddIndex(
+                    model_name='question',
+                    index=models.Index(fields=['-pub_date'], name='polls_quest_pub_dat_ca81de_idx'),
+                ),
+            ]
         ),
     ]
